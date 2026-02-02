@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <title>Frontend Mentor | Frontend quiz app</title>
+  </head>
+  <body>
+    <main>
+      <section class="theme-toggle-container">
+        <img
+          src="assets/images/icon-moon-light.svg"
+          alt="Light mode icon"
+          id="sun-icon"
+        />
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider round"></span>
+        </label>
+        <img
+          src="assets/images/icon-moon-dark.svg"
+          alt="Dark mode icon"
+          id="moon-icon"
+        />
+      </section>
+      <!-- Quiz menu start -->
+      <section id="start-menu" class="screen">
+        <div class="quiz-menu-header">
+          <h1>Welcome to the <strong>Frontend Quiz!</strong></h1>
+          <p>Pick a subject to get started.</p>
+        </div>
+        <div class="quiz-menu" id="category-list"></div>
+      </section>
+      <!-- Quiz menu end -->
+
+      <!-- Quiz question start -->
+      <section id="quiz-screen" class="screen hidden">
+        Question
+        <!-- number -->
+        of 10 A B C D Submit answer
+      </section>
+      <!-- Quiz question end -->
+
+      <!-- Quiz completed start -->
+      <section id="score-screen" class="screen hidden">
+        Quiz completed You scored...
+
+        <!-- score -->
+        out of 10
+      </section>
+      <!-- Quiz completed end -->
+    </main>
+
+    <script type="module" src="JS/app.js"></script>
+  </body>
+</html>

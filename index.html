@@ -9,6 +9,9 @@
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css" />
     <title>Frontend Mentor | Frontend quiz app</title>
   </head>
@@ -16,12 +19,12 @@
     <main>
       <section class="theme-toggle-container">
         <img
-          src="assets/images/icon-moon-light.svg"
+          src="assets/images/icon-sun-dark.svg"
           alt="Light mode icon"
           id="sun-icon"
         />
         <label class="switch">
-          <input type="checkbox" id="theme-toggle" />
+          <input type="checkbox" id="theme-toggle"  />
           <span class="slider round"></span>
         </label>
         <img
@@ -33,7 +36,7 @@
       <!-- Quiz menu start -->
       <section id="start-menu" class="screen">
         <div class="quiz-menu-header">
-          <h1>Welcome to the <strong>Frontend Quiz!</strong></h1>
+          <h1>Welcome to the <span>Frontend Quiz!</span></h1>
           <p>Pick a subject to get started.</p>
         </div>
         <div class="quiz-menu" id="category-list"></div>
@@ -41,7 +44,7 @@
       <!-- Quiz menu end -->
 
       <!-- Quiz question start -->
-      <section id="quiz-screen" class="screen hidden">
+      <section id="quiz" class="quiz-screen">
         Question
         <!-- number -->
         of 10 A B C D Submit answer
@@ -49,7 +52,7 @@
       <!-- Quiz question end -->
 
       <!-- Quiz completed start -->
-      <section id="score-screen" class="screen hidden">
+      <section id="score" class="score-screen">
         Quiz completed You scored...
 
         <!-- score -->

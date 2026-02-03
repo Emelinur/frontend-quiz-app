@@ -1,15 +1,169 @@
-:root{
+:root {
+  /* COLORS */
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 100%, 100%);
+  --red: hsl(0, 82%, 63%);
+  --grey_50: hsl(220, 38%, 97%);
+  --grey_500: hsl(219, 13%, 44%);
+  --blue_50: hsl(225, 100%, 96%);
+  --blue_100: hsl(220, 50%, 95%);
+  --blue_300: hsl(216, 47%, 78%);
+  --blue_500: hsl(223, 100%, 59%);
+  --blue_850: hsl(215, 27%, 32%);
+  --blue_900: hsl(216, 25%, 25%);
+  --blue_950: hsl(214, 24%, 23%);
+  --green_100: hsl(151, 88%, 94%);
+  --green_500: hsl(151, 68%, 52%);
+  --purple_100: hsl(278, 100%, 95%);
+  --purple_600: hsl(277, 91%, 56%);
+  --orange_50: hsl(27, 100%, 96%);
+  --orange_400: hsl(22, 100%, 60%);
 
+  /* TYPOGRAPHY */
+  --ff: "Rubik", sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+
+  --fs-1: clamp(88px, 5.5rem + 5vw, 144px); /* Text Preset 1 */
+  --fs-2: clamp(40px, 2.5rem + 3vw, 64px); /* Text Preset 2 */
+  --fs-3: clamp(20px, 1.25rem + 1.5vw, 36px); /* Text Preset 3 */
+  --fs-4: clamp(18px, 1.125rem + 1vw, 28px); /* Text Preset 4 */
+  --fs-5: clamp(14px, 0.875rem + 1vw, 24px); /* Text Preset 5 */
+  --fs-6: 20px; /* Preset 6 usually stays constant or scales less */
+
+  /* LINE HEIGHTS */
+  --lh-1: 1;
+  --lh-2: 1;
+  --lh-3: 1.2;
+  --lh-4: 1;
+  --lh-5: 1.5;
+  --lh-6: 1.5;
+
+  /* SPACİNG */
+  --spacing-100: clamp(8px, 0.75rem + 0.1vw, 8px); /* Always 8px */
+  --spacing-200: clamp(12px, 0.8rem + 0.5vw, 16px);
+  --spacing-300: clamp(16px, 1rem + 0.8vw, 24px);
+  --spacing-400: clamp(24px, 1.5rem + 0.8vw, 32px);
+  --spacing-500: clamp(32px, 2rem + 0.8vw, 40px);
+  --spacing-600: clamp(40px, 2.5rem + 0.8vw, 48px);
+  --spacing-800: clamp(48px, 3rem + 1.5vw, 64px);
+  --spacing-1600: clamp(80px, 5rem + 4.5vw, 128px);
+  --spacing-1800: clamp(100px, 6.25rem + 4vw, 144px);
+  --spacing-2300: clamp(120px, 7.5rem + 6vw, 184px);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap:var(--spacing-1600) ;
 }
 
 
 /* Quiz menu start */
-  /* Quiz menu end  */
+.theme-toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+input[type="checkbox"] {
+  -webkit-appearance: none; 
+  appearance: none;         
+  margin: 0;
+  display: none;  
+}
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  justify-content: flex-end;
+}
 
- /* Quiz question start */
- /* Quiz question end */
+.switch {
+  display: flex;
+  align-items: center;
+  width: 48px;
+  height: 28px;
+  background-color: var(--purple_600);
+  border-radius: 999px;
+  padding: 4px;
+  cursor: pointer;
+}
 
+.slider {
+  width: 20px;
+  height: 20px;
+  background-color: var(--white);
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#theme-toggle:checked + .slider {
+  transform: translateX(20px);
+}
+.screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.quiz-menu-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-600);
+}
+.quiz-menu-header h1 {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-2);
+  line-height: var(--lh-2);
+  font-weight: var(--fw-light);
+  color: var(--blue_900);
+}
+.quiz-menu-header span {
+  font-weight: var(--fw-medium);
+}
+.quiz-menu-header p {
+  font-size: var(--fs-6);
+  line-height: var(--lh-6);
+  font-weight: var(--fw-light);
+  color: var(--grey_500);
+}
+/* Quiz menu end  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Quiz question start */
+.quiz-screen {
+  display: none;
+}
+/* Quiz question end */
 
 /* Quiz completed start */
+.score-screen {
+  display: none;
+}
 /* score */
 /* Quiz completed end */

@@ -25,32 +25,52 @@
   --fw-regular: 400;
   --fw-medium: 500;
 
-  --fs-1: clamp(88px, 5.5rem + 5vw, 144px); /* Text Preset 1 */
-  --fs-2: clamp(40px, 2.5rem + 3vw, 64px); /* Text Preset 2 */
-  --fs-3: clamp(20px, 1.25rem + 1.5vw, 36px); /* Text Preset 3 */
-  --fs-4: clamp(18px, 1.125rem + 1vw, 28px); /* Text Preset 4 */
-  --fs-5: clamp(14px, 0.875rem + 1vw, 24px); /* Text Preset 5 */
-  --fs-6: 20px; /* Preset 6 usually stays constant or scales less */
-
-  /* LINE HEIGHTS */
+  /* TEXT PRESET 1 */
+  --fs-1: 144px;
+  --fs-1-mobile: 88px;
   --lh-1: 1;
-  --lh-2: 1;
-  --lh-3: 1.2;
-  --lh-4: 1;
-  --lh-5: 1.5;
-  --lh-6: 1.5;
+  --ls-1: 0;
 
-  /* SPACİNG */
-  --spacing-100: clamp(8px, 0.75rem + 0.1vw, 8px); /* Always 8px */
-  --spacing-200: clamp(12px, 0.8rem + 0.5vw, 16px);
-  --spacing-300: clamp(16px, 1rem + 0.8vw, 24px);
-  --spacing-400: clamp(24px, 1.5rem + 0.8vw, 32px);
-  --spacing-500: clamp(32px, 2rem + 0.8vw, 40px);
-  --spacing-600: clamp(40px, 2.5rem + 0.8vw, 48px);
-  --spacing-800: clamp(48px, 3rem + 1.5vw, 64px);
-  --spacing-1600: clamp(80px, 5rem + 4.5vw, 128px);
-  --spacing-1800: clamp(100px, 6.25rem + 4vw, 144px);
-  --spacing-2300: clamp(120px, 7.5rem + 6vw, 184px);
+  /* TEXT PRESET 2 */
+  --fs-2: 64px;
+  --fs-2-mobile: 40px;
+  --lh-2: 1;
+  --ls-2: 0;
+
+  /* TEXT PRESET 3 */
+  --fs-3: 36px;
+  --fs-3-mobile: 20px;
+  --lh-3: 1.2;
+  --ls-3: 0;
+
+  /* TEXT PRESET 4 */
+  --fs-4: 28px;
+  --fs-4-mobile: 18px;
+  --lh-4: 1;
+  --ls-4: 0;
+
+  /* TEXT PRESET 5 */
+  --fs-5: 24px;
+  --fs-5-mobile: 14px;
+  --lh-5: 1.5;
+  --ls-5: 0;
+
+  /* TEXT PRESET 6 */
+  --fs-6: 20px;
+  --lh-6: 1.5;
+  --ls-6: 0;
+
+/* Spacing Scale from Guide */
+  --spacing-100: 8px;
+  --spacing-200: 16px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-500: 40px;
+  --spacing-600: 48px;
+  --spacing-800: 64px;
+  --spacing-1600: 128px;
+  --spacing-1800: 144px;
+  --spacing-2300: 184px;
 }
 * {
   margin: 0;
@@ -63,14 +83,16 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url(../assets/images/pattern-background-desktop-light.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--grey_50);
 }
 main {
-    max-width: 1157px;
-  width: 100%;
+  width: 1157px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
   gap:var(--spacing-1600) ;
 }
 
@@ -159,15 +181,13 @@ input[type="checkbox"] {
   align-items: center;
   gap: var(--spacing-400);
   padding: var(--spacing-300);
-  font-size: var(--fs-4);
-  line-height: var(--lh-4);
-  color: var(--blue_900);
   background-color: var(--white);
-  border: 1px solid var(--black);
+  border: 0;
   border-radius: var(--spacing-300);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .btn img{
   padding: var(--spacing-100);
   border-radius: var(--spacing-100);
@@ -184,6 +204,95 @@ input[type="checkbox"] {
 .accessibility-icon{
   background-color: var(--purple_100);
 }
+.btnText {
+   font-size: var(--fs-4);
+  line-height: var(--lh-4);
+  color: var(--blue_900);
+}
+
+
+
+@media (max-width: 768px) {
+ main{
+  padding: var(--spacing-300);
+  width: 100%;
+  gap: var(--spacing-300);
+  }
+ 
+  .screen {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: var(--spacing-300);
+  }
+  .quiz-menu-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-200);
+    text-align: center;
+  }
+  .quiz-menu-header h1 {
+    font-size: var(--fs-2-mobile);
+    line-height: var(--lh-2);
+  }
+  .quiz-menu{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+.btn{
+  gap: var(--spacing-200);
+  padding: var(--spacing-200);
+}
+.btn img{
+width: 40px;
+}
+.btnText {
+   font-size: var(--fs-4-mobile);
+}
+}
+@media (max-width:1144px) {
+ main{
+  padding: var(--spacing-800);
+  width: 100%;
+  gap: var(--spacing-800);
+  }
+ 
+  .screen {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: var(--spacing-800);
+  }
+  .quiz-menu-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-200);
+    text-align: center;
+  }
+  .quiz-menu-header h1 {
+    font-size: var(--fs-2-mobile);
+    line-height: var(--lh-2);
+  }
+  .quiz-menu{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+.btn{
+  gap: var(--spacing-200);
+  padding: var(--spacing-200);
+}
+.btn img{
+width: 40px;
+}
+.btnText {
+   font-size: var(--fs-4-mobile);
+}
+}
+
+
+
+
+
 /* Quiz menu end  */
 
 

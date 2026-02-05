@@ -60,7 +60,7 @@
   --lh-6: 1.5;
   --ls-6: 0;
 
-/* Spacing Scale from Guide */
+  /* Spacing Scale from Guide */
   --spacing-100: 8px;
   --spacing-200: 16px;
   --spacing-300: 24px;
@@ -93,10 +93,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap:var(--spacing-1600) ;
+  gap: var(--spacing-1600);
 }
-
-
 /* Quiz menu start */
 .theme-toggle-container {
   display: flex;
@@ -105,10 +103,10 @@ main {
   gap: var(--spacing-200);
 }
 input[type="checkbox"] {
-  -webkit-appearance: none; 
-  appearance: none;         
+  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
-  display: none;  
+  display: none;
 }
 .theme-toggle-container {
   display: flex;
@@ -116,6 +114,7 @@ input[type="checkbox"] {
   gap: var(--spacing-200);
   justify-content: flex-end;
 }
+
 
 .switch {
   display: flex;
@@ -162,19 +161,21 @@ input[type="checkbox"] {
   font-weight: var(--fw-light);
   color: var(--grey_500);
 }
+.hidden {
+  display: none!important;
+}
 .screen {
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-1600);
 }
-.quiz-menu{
+.quiz-menu {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-200);
 }
 
-.btn{
+.btn {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -188,37 +189,71 @@ input[type="checkbox"] {
   transition: background-color 0.3s ease;
 }
 
-.btn img{
+.btn img {
   padding: var(--spacing-100);
   border-radius: var(--spacing-100);
 }
-.html-icon{
+.html-icon {
   background-color: var(--orange_50);
 }
-.css-icon{
+.css-icon {
   background-color: var(--green_100);
 }
-.js-icon{
+.js-icon {
   background-color: var(--blue_50);
 }
-.accessibility-icon{
+.accessibility-icon {
   background-color: var(--purple_100);
 }
 .btnText {
-   font-size: var(--fs-4);
+  font-size: var(--fs-4);
   line-height: var(--lh-4);
   color: var(--blue_900);
 }
 
-
-
-@media (max-width: 768px) {
- main{
-  padding: var(--spacing-300);
-  width: 100%;
-  gap: var(--spacing-300);
+@media (max-width: 1144px) {
+  main {
+    padding: var(--spacing-800);
+    width: 100%;
+    gap: var(--spacing-800);
   }
- 
+  .screen {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: var(--spacing-800);
+  }
+  .quiz-menu-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+  }
+  .quiz-menu-header h1 {
+    font-size: var(--fs-2-mobile);
+    line-height: var(--lh-2);
+  }
+  .quiz-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-200);
+  }
+  .btn {
+    gap: var(--spacing-300);
+    padding: var(--spacing-200);
+  }
+  .btn img {
+    width: 40px;
+  }
+  .btnText {
+    font-size: var(--fs-4-mobile);
+  }
+}
+
+@media (max-width: 767px) {
+  main {
+    padding: var(--spacing-300);
+    width: 100%;
+    gap: var(--spacing-300);
+  }
   .screen {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -234,79 +269,23 @@ input[type="checkbox"] {
     font-size: var(--fs-2-mobile);
     line-height: var(--lh-2);
   }
-  .quiz-menu{
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-200);
-}
-.btn{
-  gap: var(--spacing-200);
-  padding: var(--spacing-200);
-}
-.btn img{
-width: 40px;
-}
-.btnText {
-   font-size: var(--fs-4-mobile);
-}
-}
-@media (max-width:1144px) {
- main{
-  padding: var(--spacing-800);
-  width: 100%;
-  gap: var(--spacing-800);
-  }
- 
-  .screen {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: var(--spacing-800);
-  }
-  .quiz-menu-header {
+  .quiz-menu {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-200);
-    text-align: center;
   }
-  .quiz-menu-header h1 {
-    font-size: var(--fs-2-mobile);
-    line-height: var(--lh-2);
+  .btn {
+    gap: var(--spacing-200);
+    padding: var(--spacing-200);
   }
-  .quiz-menu{
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-200);
+  .btn img {
+    width: 40px;
+  }
+  .btnText {
+    font-size: var(--fs-4-mobile);
+  }
 }
-.btn{
-  gap: var(--spacing-200);
-  padding: var(--spacing-200);
-}
-.btn img{
-width: 40px;
-}
-.btnText {
-   font-size: var(--fs-4-mobile);
-}
-}
-
-
-
-
-
 /* Quiz menu end  */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Quiz question start */
 .quiz-screen {

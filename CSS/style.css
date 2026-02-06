@@ -95,9 +95,17 @@ main {
   justify-content: center;
   gap: var(--spacing-1600);
 }
-/* Quiz menu start */
+/* Quiz-menu header start*/
+.quiz-menu-header{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
 .theme-toggle-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: var(--spacing-200);
@@ -161,6 +169,9 @@ input[type="checkbox"] {
   font-weight: var(--fw-light);
   color: var(--grey_500);
 }
+/* Quiz-menu header end*/
+
+/* Quiz menu start */
 .hidden {
   display: none!important;
 }

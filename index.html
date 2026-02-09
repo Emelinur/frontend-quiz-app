@@ -1,115 +1,175 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <title>Frontend Mentor | Frontend quiz app</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="CSS/style.css" />
-  <title>Frontend Mentor | Frontend quiz app</title>
-</head>
-
-<body>
-  <main>
-    <nav class="app-header">
-      <div class="active-category" id="active-category">
-        <img src="assets/images/icon-accessibility.svg" alt="" id="quiz-menu-title-icon" class="active-category-img">
-        <span id="header-text" class="category-text">Accessibility</span>
-      </div>
-
-      <div class="theme-toggle-container">
-        <img src="assets/images/icon-sun-dark.svg" alt="Light mode" id="sun-icon" />
-        <label class="switch">
-          <input type="checkbox" id="theme-toggle" />
-          <span class="slider round"></span>
-        </label>
-        <img src="assets/images/icon-moon-dark.svg" alt="Dark mode" id="moon-icon" />
-      </div>
-    </nav>
-    <!-- Quiz menu start -->
-    <section id="start-menu" class="screen-layout hidden">
-      <div class="v-stack-lg">
-        <h1>Welcome to the <span>Frontend Quiz!</span></h1>
-        <p>Pick a subject to get started.</p>
-      </div>
-      <div class="quiz-menu" id="category-list">
-        <button class="active btn" data-category="html">
-          <img src="assets/images/icon-html.svg" alt="icon-html" class="html-icon">
-          <span class="btnText">HTML</span>
-        </button>
-        <button class="btn" data-category="css">
-          <img src="assets/images/icon-css.svg" alt="icon-css" class="css-icon">
-          <span class="btnText">CSS</span>
-        </button>
-        <button class="btn" data-category="javascript">
-          <img src="assets/images/icon-js.svg" alt="icon-javascript" class="js-icon">
-          <span class="btnText">JavaScript</span>
-        </button>
-        <button class="btn" data-category="accessibility">
-          <img src="assets/images/icon-accessibility.svg" alt="icon-accessibility" class="accessibility-icon">
-          <span class="btnText">Accessibility</span>
-        </button>
-      </div>
-    </section>
-    <!-- Quiz menu end -->
-
-
-
-    <!-- Quiz question start -->
-    <section id="quiz-screen" class="screen-layout">
-      <div class="v-stack-lg">
-        <div class="question-info">
-          <span class="question-count"> Question  <span id="current-num">1</span> of 10</span>
-          <p>Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement
-            for normal text?</p>
+  <body>
+    <main>
+      <nav class="app-header">
+        <div class="active-category" id="active-category">
+          <img
+            src="assets/images/icon-accessibility.svg"
+            alt=""
+            id="quiz-menu-title-icon"
+            class="active-category-img"
+          />
+          <span id="header-text" class="category-text">Accessibility</span>
         </div>
-        <div class="progress-container">
-          <input type="range" id="quiz-progress" min="0" max="100" value="10" class="hidden-input">
 
-          <label for="quiz-progress" class="progress-track">
-            <span class="progress-fill" style="width: 10%;"></span>
+        <div class="theme-toggle-container">
+          <img
+            src="assets/images/icon-sun-dark.svg"
+            alt="Light mode"
+            id="sun-icon"
+          />
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider round"></span>
           </label>
+          <img
+            src="assets/images/icon-moon-dark.svg"
+            alt="Dark mode"
+            id="moon-icon"
+          />
         </div>
-      </div>
-      <div class="quiz-menu" id="category-list">
-        <button class="active btn" data-category="html">
-          <img src="assets/images/icon-html.svg" alt="icon-html" class="html-icon">
-          <span class="btnText">HTML</span>
-        </button>
-        <button class="btn" data-category="css">
-          <img src="assets/images/icon-css.svg" alt="icon-css" class="css-icon">
-          <span class="btnText">CSS</span>
-        </button>
-        <button class="btn" data-category="javascript">
-          <img src="assets/images/icon-js.svg" alt="icon-javascript" class="js-icon">
-          <span class="btnText">JavaScript</span>
-        </button>
-        <button class="btn" data-category="accessibility">
-          <img src="assets/images/icon-accessibility.svg" alt="icon-accessibility" class="accessibility-icon">
-          <span class="btnText">Accessibility</span>
-        </button>
-      </div>
-    </section>
-    <!-- Quiz question end -->
+      </nav>
 
+      <!-- Quiz menu start -->
+      <section id="start-menu" class="screen-layout hidden">
+        <div class="v-stack-lg">
+          <h1>Welcome to the <span>Frontend Quiz!</span></h1>
+          <p>Pick a subject to get started.</p>
+        </div>
+        <div class="quiz-menu" id="category-list">
+          <button class="active btn" data-category="html">
+            <img
+              src="assets/images/icon-html.svg"
+              alt="icon-html"
+              class="html-icon"
+            />
+            <span class="btnText">HTML</span>
+          </button>
+          <button class="btn" data-category="css">
+            <img
+              src="assets/images/icon-css.svg"
+              alt="icon-css"
+              class="css-icon"
+            />
+            <span class="btnText">CSS</span>
+          </button>
+          <button class="btn" data-category="javascript">
+            <img
+              src="assets/images/icon-js.svg"
+              alt="icon-javascript"
+              class="js-icon"
+            />
+            <span class="btnText">JavaScript</span>
+          </button>
+          <button class="btn" data-category="accessibility">
+            <img
+              src="assets/images/icon-accessibility.svg"
+              alt="icon-accessibility"
+              class="accessibility-icon"
+            />
+            <span class="btnText">Accessibility</span>
+          </button>
+        </div>
+      </section>
+      <!-- Quiz menu end -->
 
+      <!-- Quiz question start -->
+      <section id="quiz-screen" class="screen-layout hidden">
+        <div class="v-stack-lg">
+          <div class="question-info">
+            <span class="question-count">
+              Question <span id="current-num">1</span> of 10</span>
+            <p class="question-text">
+              Which of these color contrast ratios defines the minimum WCAG 2.1
+              Level AA requirement for normal text?
+            </p>
+          </div>
+          <div class="progress-container">
+            <input
+              type="range"
+              id="quiz-progress"
+              min="0"
+              max="100"
+              value="10"
+              class="hidden-input"
+            />
+          </div>
+        </div>
+        <div class="quiz-menu" id="options-list">
+          <button class="active btn" type="button">
+            <span class="question-char">A</span>
+            <span class="choice-text">4.5 : 1</span>
+          </button>
+          <button class="btn" type="button">
+            <span class="question-char">B</span>
+            <span class="choice-text">3 : 1 </span>
+          </button>
+          <button class="btn" type="button">
+            <span class="question-char">C</span>
+            <span class="choice-text">2.5 : 1</span>
+          </button>
+          <button class="btn" type="button">
+            <span class="question-char">D</span>
+            <span class="choice-text">5 : 1</span>
+          </button>
+          <button type="submit" class="submitBtn">
+            <span>Submit Answer</span>
+          </button>
+        </div>
+      </section>
+      <!-- Quiz question end -->
 
+      <!-- Quiz completed start -->
+  <section id="quiz-completed" class="screen-layout ">
+        <div class="v-stack-lg">
+          <div class="question-info">
+              <p class="question-count">Quiz Completed!</p>
+          <p>You scored...</p>
+          </div>
+        
+        </div>
+        <div class="quiz-completed-score" id="quiz-score">
+           <div class="active-category" id="active-category">
+          <img
+            src="assets/images/icon-accessibility.svg"
+            alt=""
+            id="quiz-menu-title-icon"
+            class="active-category-img"
+          />
+          <span id="header-text" class="category-text">Accessibility</span>
+        </div>
+        <div class="question-info">
+            <p class="question-count" id="final-score">8</p>
+            <span>out of 10</span>
+        </div>
+          <button type="button" class="submitBtn" id="restart-btn">
+            <span>Play Again</span>
+          </button>
+        </div>
+      </section>
+      <!-- Quiz completed end -->
+    </main>
 
-    <!-- Quiz completed start -->
-    <section id="score" class="score-screen">
-      Quiz completed You scored...
-
-      <!-- score -->
-      out of 10
-    </section>
-    <!-- Quiz completed end -->
-  </main>
-
-  <script type="module" src="JS/app.js"></script>
-</body>
-
+    <script type="module" src="JS/app.js"></script>
+  </body>
 </html>

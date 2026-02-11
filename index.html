@@ -25,7 +25,7 @@
         <div class="active-category" id="active-category">
           <img
             src="assets/images/icon-accessibility.svg"
-            alt=""
+            alt="quiz category icon"
             id="quiz-menu-title-icon"
             class="active-category-img"
           />
@@ -51,10 +51,12 @@
       </nav>
 
       <!-- Quiz menu start -->
-      <section id="start-menu" class="screen-layout hidden">
+      <section id="start-menu" class="screen-layout">
         <div class="v-stack-lg">
-          <h1>Welcome to the <span>Frontend Quiz!</span></h1>
-          <p>Pick a subject to get started.</p>
+          <h1 class="start-menu-header">
+            Welcome to the <span class="start-menu-bold">Frontend Quiz!</span>
+          </h1>
+          <p class="start-menu-text">Pick a subject to get started.</p>
         </div>
         <div class="quiz-menu" id="category-list">
           <button class="active btn" data-category="html">
@@ -94,7 +96,7 @@
       <!-- Quiz menu end -->
 
       <!-- Quiz question start -->
-      <section id="quiz-screen" class="screen-layout hidden">
+      <section id="quiz-screen" class="screen-layout">
         <div class="v-stack-lg">
           <div class="question-info">
             <span class="question-count">
@@ -133,7 +135,7 @@
             <span class="question-char">D</span>
             <span class="choice-text">5 : 1</span>
           </button>
-          <button type="submit" class="submitBtn">
+          <button type="submit" class="btnchange" id="submitBtn">
             <span>Submit Answer</span>
           </button>
         </div>
@@ -141,32 +143,36 @@
       <!-- Quiz question end -->
 
       <!-- Quiz completed start -->
-      <section id="quiz-completed" class="screen-layout ">
-  <div class="v-stack-lg">
-    <div class="result-header">
-      <p class="quiz-completed-text">Quiz completed</p>
-      <p class="score-summary-text">You scored...</p>
-    </div>
-  </div>
+      <section id="quiz-completed" class="screen-layout">
+        <div class="v-stack-lg">
+          <div class="result-header">
+            <p class="quiz-completed-text">Quiz completed</p>
+            <p class="score-summary-text">You scored...</p>
+          </div>
+        </div>
 
-  <div class="v-stack" id="quiz-result-container">
-    <div class="score-card" id="final-score-box">
-      <div class="active-category">
-        <img src="assets/images/icon-accessibility.svg" alt="" class="active-category-img" />
-        <span class="category-text">Accessibility</span>
-      </div>
+        <div class="v-stack" id="quiz-result-container">
+          <div class="score-card" id="final-score-box">
+            <div class="active-category">
+              <img
+                src="assets/images/icon-accessibility.svg"
+                alt="active quiz category icon"
+                class="active-category-img"
+              />
+              <span class="category-text">Accessibility</span>
+            </div>
 
-      <div class="score-display">
-        <p id="final-score-value">8</p>
-        <span>out of 10</span>
-      </div>
-    </div>
+            <div class="score-display">
+              <p class="final-score-value">8</p>
+              <span class="score-summary-text">out of 10</span>
+            </div>
+          </div>
 
-    <button type="button" class="submitBtn" id="restart-btn">
-      <span>Play Again</span>
-    </button>
-  </div>
-</section>
+          <button type="button" class="btnchange restartbtn" id="restart-btn">
+            <span>Play Again</span>
+          </button>
+        </div>
+      </section>
       <!-- Quiz completed end -->
     </main>
 

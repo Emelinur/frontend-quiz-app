@@ -88,6 +88,14 @@ body {
   background-size: cover;
   background-color: var(--grey_50);
 }
+.dark{
+  background-image: url(../assets/images/pattern-background-desktop-dark.svg);
+  background-color: var(--blue_900);
+}
+/* [data-theme="dark"] body {
+  background-image: url(../assets/images/pattern-background-desktop-dark.svg);
+  background-color: var(--blue_950);
+} */
 main {
   width: 100%;
   max-width: 1157px;
@@ -123,7 +131,7 @@ main {
   gap: var(--spacing-400);
   padding: var(--spacing-300);
   background-color: var(--white);
-  border: none;
+  border: 2px solid transparent;
   border-radius: var(--spacing-300);
   cursor: pointer;
   box-shadow: 0 16px 40px rgba(143, 160, 193, 0.14);

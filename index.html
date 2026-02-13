@@ -33,25 +33,17 @@
         </div>
 
         <div class="theme-toggle-container">
-          <img
-            src="assets/images/icon-sun-dark.svg"
-            alt="Light mode"
-            id="sun-icon"
-          />
+          <div class="thema-sun-icon" id="sun-icon"></div>
           <label class="switch">
             <input type="checkbox" id="theme-toggle" />
             <span class="slider round"></span>
           </label>
-          <img
-            src="assets/images/icon-moon-dark.svg"
-            alt="Dark mode"
-            id="moon-icon"
-          />
+          <div class="thema-moon-icon" id="moon-icon"></div>
         </div>
       </nav>
 
       <!-- Quiz menu start -->
-      <section id="start-menu" class="screen-layout">
+      <section id="start-menu" class="screen-layout ">
         <div class="v-stack-lg">
           <h1 class="start-menu-header">
             Welcome to the <span class="start-menu-bold">Frontend Quiz!</span>
@@ -159,7 +151,9 @@
                 alt="active quiz category icon"
                 class="active-category-img"
               />
-              <span class="category-text">Accessibility</span>
+              <span class="category-text category-text-dark"
+                >Accessibility</span
+              >
             </div>
 
             <div class="score-display">

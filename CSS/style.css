@@ -135,7 +135,6 @@ main {
 .fs-xl {
   font-size: var(--fs-1);
   line-height: var(--lh-1);
-  color: var(--blue_900);
 }
 
 .fs-l {

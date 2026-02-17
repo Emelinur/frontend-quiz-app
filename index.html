@@ -51,44 +51,44 @@
           <p class="fs-smaller">Pick a subject to get started.</p>
         </div>
         <div class="quiz-menu" id="category-list">
-          <button class="active btn bg-color-white btn-bg-color" data-category="html">
+          <button class="active btn bg-color-white btn-bg-color" data-category="html" id="btnCategory">
             <img
               src="assets/images/icon-html.svg"
               alt="icon-html"
               class="html-icon p-100"
             />
-            <span class="fs-s fs-s-mobile">HTML</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue">HTML</span>
           </button>
-          <button class="btn bg-color-white btn-bg-color" data-category="css">
+          <button class="btn bg-color-white btn-bg-color" data-category="css" id="btnCategory">
             <img
               src="assets/images/icon-css.svg"
               alt="icon-css"
               class="css-icon p-100"
             />
-            <span class="fs-s fs-s-mobile ">CSS</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue">CSS</span>
           </button>
-          <button class="btn bg-color-white btn-bg-color" data-category="javascript">
+          <button class="btn bg-color-white btn-bg-color" data-category="javascript" id="btnCategory">
             <img
               src="assets/images/icon-js.svg"
               alt="icon-javascript"
               class="js-icon p-100"
             />
-            <span class="fs-s fs-s-mobile  ">JavaScript</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue">JavaScript</span>
           </button>
-          <button class="btn bg-color-white btn-bg-color" data-category="accessibility">
+          <button class="btn bg-color-white btn-bg-color" data-category="accessibility" id="btnCategory">
             <img
               src="assets/images/icon-accessibility.svg"
               alt="icon-accessibility"
               class="accessibility-icon p-100"
             />
-            <span class="fs-s fs-s-mobile ">Accessibility</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue">Accessibility</span>
           </button>
         </div>
       </section>
       <!-- Quiz menu end -->
 
       <!-- Quiz question start -->
-      <section id="quiz-screen" class="screen-layout">
+      <section id="quiz-screen" class="screen-layout hidden">
         <div class="v-stack-lg">
           <div class="question-info">
             <span class="question-count fs-smaller fs-m-mobile ">
@@ -113,19 +113,19 @@
         <div class="quiz-menu" id="options-list">
           <button class="active btn bg-color-white btn-bg-color" type="button">
             <span class="fs-s quiz-menu-char fs-s-mobile">A</span>
-            <span class="fs-s fw-medium fs-s-mobile">4.5 : 1</span>
+            <span class="fs-s fw-medium fs-s-mobile text-color">4.5 : 1</span>
           </button>
-          <button class="btn bg-color-white btn-bg-color" type="button">
+          <button class="btn bg-color-white btn-bg-color " type="button">
             <span class="fs-s quiz-menu-char  fs-s-mobile">B</span>
-            <span class="fs-s fw-medium fs-s-mobile">3 : 1 </span>
+            <span class="fs-s fw-medium fs-s-mobile text-color">3 : 1 </span>
           </button>
           <button class="btn bg-color-white btn-bg-color" type="button">
             <span class="fs-s quiz-menu-char  fs-s-mobile">C</span>
-            <span class="fs-s fw-medium  fs-s-mobile">2.5 : 1</span>
+            <span class="fs-s fw-medium fs-s-mobile text-color">2.5 : 1</span>
           </button>
           <button class="btn bg-color-white btn-bg-color" type="button">
             <span class="fs-s quiz-menu-char  fs-s-mobile">D</span>
-            <span class="fs-s fw-medium  fs-s-mobile">5 : 1</span>
+            <span class="fs-s fw-medium fs-s-mobile text-color">5 : 1</span>
           </button>
           <button type="submit" class="btnchange fs-s-mobile" id="submitBtn">
             <span>Submit Answer</span>
@@ -135,7 +135,7 @@
       <!-- Quiz question end -->
 
       <!-- Quiz completed start -->
-      <section id="quiz-completed" class="screen-layout">
+      <section id="quiz-completed" class="screen-layout hidden">
         <div class="v-stack-lg">
           <div class="result-header">
             <p class="fs-l fw-light fs-l-mobile ">Quiz completed</p>
@@ -154,8 +154,8 @@
               <span class="fs-s fs-s-mobile ">Accessibility</span>
             </div>
 
-            <div class="score-display">
-              <p class="fs-xl fw-medium  fs-xl-mobile">8</p>
+            <div class="score-display ">
+              <p class="fs-xl fw-medium  fs-xl-mobile text-color">8</p>
               <span class="fs-sm fw-regular fs-sm-mobile">out of 10</span>
             </div>
           </div>

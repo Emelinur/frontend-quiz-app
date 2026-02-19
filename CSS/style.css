@@ -331,7 +331,7 @@ input[type="checkbox"] {
 .question-count {
   font-style: italic;
 }
-.question-text {
+.marginBottom {
   margin-bottom: var(--spacing-1600);
 }
 .quiz-menu-char {

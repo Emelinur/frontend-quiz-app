@@ -3,6 +3,7 @@ const themaSelect = document.querySelector("#theme-toggle");
 const btnCategory = document.querySelectorAll("#btnCategory");
 const quizScreen = document.querySelector("#quiz-screen");
 const startMenu = document.querySelector("#start-menu");
+const activeCategory=document.querySelector("#active-category");
 
 themaSelect.addEventListener("change", (e) => {
   const selectedThema = e.target.checked;
@@ -27,11 +28,14 @@ btnCategory.forEach((btn) => {
       console.log(`${categoryName} selected`);
       startMenu.classList.add("hidden");
       quizScreen.classList.remove("hidden");
+         activeCategory.classList.remove("hidden");
+         activeCategory.querySelector("img").src=selectedQuiz.icon;
+         activeCategory.querySelector("#header-text").textContent= selectedQuiz.title;
       renderQuestion(selectedQuiz.questions[0]);
-      renderOptions(selectedQuiz.questions[0].options)
-    }
+      renderOptions(selectedQuiz.questions[0].options);
+ 
+  }
   });
-
   function renderQuestion(questionData) { //Ouestions
     const questionText = document.querySelector("#questionText");
     if (questionText) {
@@ -44,7 +48,7 @@ btnCategory.forEach((btn) => {
     const optionsHTML=options.map((option,index)=>{
       const letter = String.fromCharCode(65 + index);
 return`
-<button class="active btn bg-color-white btn-bg-color" type="button" data-option="${option}" >
+<button class="active btn bg-color-white btn-bg-color" type="button" data-option="${option}" id="btnQuestion">
             <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
           </button>
@@ -56,4 +60,9 @@ return`
           </button>
    `
   }
+
+  
+
+
+  
 });

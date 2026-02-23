@@ -185,11 +185,15 @@ main {
 .screen-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "question options"
+    "question submit";
   gap: var(--spacing-1600);
 }
 .v-stack-lg {
   display: flex;
   flex-direction: column;
+  grid-area: question;
   gap: var(--spacing-600);
 }
 
@@ -213,8 +217,12 @@ main {
 .btn:hover {
   border: 2px solid var(--purple_600);
 }
+.selected {
+  border: 2px solid var(--purple_600);
+}
 
 .btnchange {
+  grid-area: submit;
   padding: var(--spacing-400);
   background-color: var(--purple_600);
   border: none;

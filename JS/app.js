@@ -3,7 +3,8 @@ const themaSelect = document.querySelector("#theme-toggle");
 const btnCategory = document.querySelectorAll("#btnCategory");
 const quizScreen = document.querySelector("#quiz-screen");
 const startMenu = document.querySelector("#start-menu");
-const activeCategory=document.querySelector("#active-category");
+const activeCategory = document.querySelector("#active-category");
+const optionsList = document.querySelector("#options-list");
 
 themaSelect.addEventListener("change", (e) => {
   const selectedThema = e.target.checked;
@@ -11,6 +12,19 @@ themaSelect.addEventListener("change", (e) => {
     ? document.body.classList.add("dark")
     : document.body.classList.remove("dark");
   localStorage.setItem("selectedThema", selectedThema);
+});
+
+let selectedAnswer = null;
+optionsList.addEventListener("click", (e) => {
+  const clickedBtn = e.target.closest(".btn");
+  if (clickedBtn) {
+    const allBtns = optionsList.querySelectorAll(".btn");
+    allBtns.forEach((btn) => {
+      btn.classList.remove("selected");
+    });
+    clickedBtn.classList.add("selected");
+    selectedAnswer = clickedBtn.getAttribute("data-option");
+  }
 });
 
 btnCategory.forEach((btn) => {
@@ -28,41 +42,37 @@ btnCategory.forEach((btn) => {
       console.log(`${categoryName} selected`);
       startMenu.classList.add("hidden");
       quizScreen.classList.remove("hidden");
-         activeCategory.classList.remove("hidden");
-         activeCategory.querySelector("img").src=selectedQuiz.icon;
-         activeCategory.querySelector("#header-text").textContent= selectedQuiz.title;
+      activeCategory.classList.remove("hidden");
+      activeCategory.querySelector("img").src = selectedQuiz.icon;
+      activeCategory.querySelector("#header-text").textContent =
+        selectedQuiz.title;
       renderQuestion(selectedQuiz.questions[0]);
       renderOptions(selectedQuiz.questions[0].options);
- 
-  }
+    }
   });
-  function renderQuestion(questionData) { //Ouestions
+  function renderQuestion(questionData) {
+    //Ouestions
     const questionText = document.querySelector("#questionText");
     if (questionText) {
-        questionText.textContent = questionData.question;
+      questionText.textContent = questionData.question;
     }
   }
 
-  function renderOptions(options){ //options
-    const optionsContainer=document.querySelector("#options-list");
-    const optionsHTML=options.map((option,index)=>{
-      const letter = String.fromCharCode(65 + index);
-return`
-<button class="active btn bg-color-white btn-bg-color" type="button" data-option="${option}" id="btnQuestion">
+  function renderOptions(options) {
+    //options
+    const optionsContainer = document.querySelector("#options-list");
+    const optionsHTML = options
+      .map((option, index) => {
+        const letter = String.fromCharCode(65 + index);
+        return `
+<button class="btn bg-color-white btn-bg-color" type="button" data-option="${option}" id="btnQuestion">
             <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
           </button>
-`
-    }).join("");
-   optionsContainer.innerHTML=optionsHTML+ `
-    <button type="submit" class="btnchange fs-s-mobile" id="submitBtn">
-            <span>Submit Answer</span>
-          </button>
-   `
+`;
+      })
+      .join("");
+    optionsContainer.innerHTML= optionsHTML;
   }
-
-  
-
-
-  
+  optionsList;
 });

@@ -5,6 +5,7 @@ const quizScreen = document.querySelector("#quiz-screen");
 const startMenu = document.querySelector("#start-menu");
 const activeCategory = document.querySelector("#active-category");
 const optionsList = document.querySelector("#options-list");
+const submitBtn = document.querySelector("#submitBtn");
 
 themaSelect.addEventListener("change", (e) => {
   const selectedThema = e.target.checked;
@@ -13,7 +14,7 @@ themaSelect.addEventListener("change", (e) => {
     : document.body.classList.remove("dark");
   localStorage.setItem("selectedThema", selectedThema);
 });
-
+let selectedQuiz = null;
 let selectedAnswer = null;
 optionsList.addEventListener("click", (e) => {
   const clickedBtn = e.target.closest(".btn");
@@ -21,10 +22,24 @@ optionsList.addEventListener("click", (e) => {
     const allBtns = optionsList.querySelectorAll(".btn");
     allBtns.forEach((btn) => {
       btn.classList.remove("selected");
+        submitBtn.addEventListener("click", () => {
+    const Btns = optionsList.querySelectorAll(".btn");
+    Btns.forEach((btn) => {
+      btn.classList.remove("selected");
+    });
+    console.log(selectedQuiz.questions[0].answer)
+    if (selectedAnswer === selectedQuiz.questions[0].answer) {
+      
+      btn.classList.add("correct");
+    } else {
+      btn.classList.add("wrong");
+    }
+  });
     });
     clickedBtn.classList.add("selected");
     selectedAnswer = clickedBtn.getAttribute("data-option");
   }
+
 });
 
 btnCategory.forEach((btn) => {
@@ -34,7 +49,7 @@ btnCategory.forEach((btn) => {
       .textContent.trim()
       .toUpperCase();
     const allData = await getData();
-    const selectedQuiz = allData.quizzes.find(
+    selectedQuiz = allData.quizzes.find(
       (quiz) => quiz.title.toUpperCase() === categoryName,
     );
 
@@ -50,29 +65,29 @@ btnCategory.forEach((btn) => {
       renderOptions(selectedQuiz.questions[0].options);
     }
   });
-  function renderQuestion(questionData) {
-    //Ouestions
-    const questionText = document.querySelector("#questionText");
-    if (questionText) {
-      questionText.textContent = questionData.question;
-    }
-  }
+});
 
-  function renderOptions(options) {
-    //options
-    const optionsContainer = document.querySelector("#options-list");
-    const optionsHTML = options
-      .map((option, index) => {
-        const letter = String.fromCharCode(65 + index);
-        return `
-<button class="btn bg-color-white btn-bg-color" type="button" data-option="${option}" id="btnQuestion">
+function renderQuestion(questionData) {
+  //Ouestions
+  const questionText = document.querySelector("#questionText");
+  if (questionText) {
+    questionText.textContent = questionData.question;
+  }
+}
+
+function renderOptions(options) {
+  //options
+  const optionsContainer = document.querySelector("#options-list");
+  const optionsHTML = options
+    .map((option, index) => {
+      const letter = String.fromCharCode(65 + index);
+      return `
+<button class="btn bg-color-white btn-bg-color" type="button" data-option="${option}">
             <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
           </button>
 `;
-      })
-      .join("");
-    optionsContainer.innerHTML= optionsHTML;
-  }
-  optionsList;
-});
+    })
+    .join("");
+  optionsContainer.innerHTML = optionsHTML;
+}

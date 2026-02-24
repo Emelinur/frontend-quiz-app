@@ -220,8 +220,17 @@ main {
 .selected {
   border: 2px solid var(--purple_600);
 }
-
-.btnchange {
+.correct{
+  border: 2px solid var(--green_500);
+}
+.wrong{
+ border: 2px solid var(--red);
+}
+.selected .quiz-menu-char {
+  background-color: var(--purple_600);
+  color: var(--white);
+}
+.btn-change {
   grid-area: submit;
   padding: var(--spacing-400);
   background-color: var(--purple_600);
@@ -229,14 +238,14 @@ main {
   border-radius: var(--spacing-300);
   cursor: pointer;
 }
-.btnchange span {
+.btn-change span {
   font-size: var(--fs-4);
   line-height: var(--lh-4);
   font-weight: var(--fw-medium);
   color: var(--white);
   text-align: center;
 }
-.btnchange:hover {
+.btn-change:hover {
   background-color: var(--purple_100);
 }
 
@@ -372,10 +381,6 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]:active::-webkit-slider-thumb {
   border: 2px solid var(--purple_600);
 }
-.question-char:hover {
-  background-color: var(--purple_600);
-  color: var(--white);
-}
 
 .question-char {
   width: 56px;
@@ -386,6 +391,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+.question-char:hover {
+  background-color: var(--purple_600);
+  color: var(--white);
 }
 
 /* Quiz question end */

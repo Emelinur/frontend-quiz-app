@@ -15,6 +15,7 @@ themaSelect.addEventListener("change", (e) => {
   localStorage.setItem("selectedThema", selectedThema);
 });
 let selectedQuiz = null;
+
 let selectedAnswer = null;
 optionsList.addEventListener("click", (e) => {
   const clickedBtn = e.target.closest(".btn");
@@ -22,24 +23,31 @@ optionsList.addEventListener("click", (e) => {
     const allBtns = optionsList.querySelectorAll(".btn");
     allBtns.forEach((btn) => {
       btn.classList.remove("selected");
-        submitBtn.addEventListener("click", () => {
-    const Btns = optionsList.querySelectorAll(".btn");
-    Btns.forEach((btn) => {
-      btn.classList.remove("selected");
-    });
-    console.log(selectedQuiz.questions[0].answer)
-    if (selectedAnswer === selectedQuiz.questions[0].answer) {
-      
-      btn.classList.add("correct");
-    } else {
-      btn.classList.add("wrong");
-    }
-  });
     });
     clickedBtn.classList.add("selected");
     selectedAnswer = clickedBtn.getAttribute("data-option");
   }
+});
 
+submitBtn.addEventListener("click", () => {
+  if (!selectedAnswer) return;
+  let correctAnswer = selectedQuiz.questions[0].answer;
+  let currentBtn = document.querySelector(".btn.selected");
+  if (selectedAnswer === correctAnswer) {
+    currentBtn.classList.add("correct");
+  } else {
+    currentBtn.classList.add("wrong")
+    const allBtns = optionsList.querySelectorAll(".btn");
+    allBtns.forEach((btn) => {
+      if (btn.getAttribute("data-option") === correctAnswer) {
+        btn.classList.add("show-correct");
+      }
+      });
+  }
+   
+     
+ 
+  submitBtn.innerHTML = "<span>Next Question</span>";
 });
 
 btnCategory.forEach((btn) => {
@@ -85,6 +93,7 @@ function renderOptions(options) {
 <button class="btn bg-color-white btn-bg-color" type="button" data-option="${option}">
             <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
+            <span class="empty"></span>
           </button>
 `;
     })

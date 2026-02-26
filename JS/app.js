@@ -6,6 +6,7 @@ const startMenu = document.querySelector("#start-menu");
 const activeCategory = document.querySelector("#active-category");
 const optionsList = document.querySelector("#options-list");
 const submitBtn = document.querySelector("#submitBtn");
+const emptyMessage=document.querySelector(".empty-message")
 
 themaSelect.addEventListener("change", (e) => {
   const selectedThema = e.target.checked;
@@ -19,7 +20,8 @@ let selectedQuiz = null;
 let selectedAnswer = null;
 optionsList.addEventListener("click", (e) => {
   const clickedBtn = e.target.closest(".btn");
-  if (clickedBtn) {
+  if (clickedBtn && !clickedBtn.classList.contains("disabled")) {
+    emptyMessage.style.display = "none";
     const allBtns = optionsList.querySelectorAll(".btn");
     allBtns.forEach((btn) => {
       btn.classList.remove("selected");
@@ -28,24 +30,30 @@ optionsList.addEventListener("click", (e) => {
     selectedAnswer = clickedBtn.getAttribute("data-option");
   }
 });
-
-submitBtn.addEventListener("click", () => {
-  if (!selectedAnswer) return;
+submitBtn.addEventListener("click", (e) => {
+  if (!selectedAnswer){
+    emptyMessage.style.display="flex"
+    return;
+  }
   let correctAnswer = selectedQuiz.questions[0].answer;
   let currentBtn = document.querySelector(".btn.selected");
   if (selectedAnswer === correctAnswer) {
     currentBtn.classList.add("correct");
   } else {
-    currentBtn.classList.add("wrong")
+     currentBtn.classList.add("error")
     const allBtns = optionsList.querySelectorAll(".btn");
     allBtns.forEach((btn) => {
       if (btn.getAttribute("data-option") === correctAnswer) {
-        btn.classList.add("show-correct");
+     btn.classList.add("show-correct");
       }
+      const allBtns = optionsList.querySelectorAll(".btn");
+  allBtns.forEach((btn) => {
+    btn.classList.add("disabled");
+  });
+       
       });
   }
-   
-     
+  
  
   submitBtn.innerHTML = "<span>Next Question</span>";
 });

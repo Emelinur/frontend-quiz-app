@@ -187,7 +187,8 @@ main {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
     "question options"
-    "question submit";
+    "question submit"
+    "question error";
   gap: var(--spacing-1600);
 }
 .v-stack-lg {
@@ -217,6 +218,18 @@ main {
 .btn:hover {
   border: 2px solid var(--purple_600);
 }
+.empty-message{
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-100);
+   padding: var(--spacing-100);
+}
+.empty-text{
+  color: var(--red);
+ 
+}
 .selected {
   border: 2px solid var(--purple_600);
 }
@@ -234,21 +247,21 @@ main {
   background-repeat: no-repeat;
   background-position: right 24px center;
    background-size: 30px;
-  padding-right: 60px;
+  padding:var(--spacing-300);
 }
 .correct .quiz-menu-char {
   background-color: var(--green_500);
   color: var(--white);
 }
 
-.wrong{
+.error{
  border: 2px solid var(--red);
  background-image: url(../assets/images/icon-error.svg);
  background-repeat: no-repeat;
 background-position: right var(--spacing-200)center; 
-  padding-right: 60px;
+  padding:var(--spacing-300);
 }
-.wrong .quiz-menu-char {
+.eror .quiz-menu-char {
   background-color: var(--red);
   color: var(--white);
 }
@@ -256,7 +269,12 @@ background-position: right var(--spacing-200)center;
     background-image: url(../assets/images/icon-correct.svg);
   background-repeat: no-repeat;
   background-position: right var(--spacing-200) center;
-  padding-right: 60px;
+   padding:var(--spacing-300);
+}
+.disabled{
+  pointer-events: none !important; 
+  cursor: not-allowed !important;
+  opacity: 0.8;
 }
 .btn-change {
   grid-area: submit;
@@ -469,7 +487,8 @@ input[type="range"]:active::-webkit-slider-thumb {
       grid-template-areas: 
     "question" 
     "options"
-    "submit";
+    "submit"
+     "error";
     gap: var(--spacing-800);
   }
   .v-stack-lg {
@@ -570,7 +589,8 @@ input[type="range"]:active::-webkit-slider-thumb {
     grid-template-areas: 
     "question" 
     "options"
-    "submit";
+    "submit"
+    "error";
     gap: var(--spacing-300);
   }
   .v-stack-lg {
@@ -594,7 +614,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   .question-text {
     margin-bottom: var(--spacing-200);
   }
-
   .quiz-menu {
     display: flex;
     flex-direction: column;
@@ -606,6 +625,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   }
   .btn img{
     width: 40px;
+  }
+  .empty-message img{
+    width: 30px;
+    height: 30px;
   }
   .score-card {
     padding: var(--spacing-400);
@@ -619,8 +642,9 @@ input[type="range"]:active::-webkit-slider-thumb {
     padding: var(--spacing-200);
     border-radius: var(--spacing-300);
   }
+  
   .correct, 
-  .wrong,
+  .error,
   .show-correct{
     background-size: 30px;
   }

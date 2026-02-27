@@ -23,67 +23,94 @@
     <main>
       <nav class="app-header">
         <div class="active-category hidden" id="active-category">
-      <span id="quiz-menu-title-icon">
+          <span id="quiz-menu-title-icon">
             <img
-            src="./assets/images/icon-accessibility.svg"
-            alt="quiz category icon"
-            
-            class="active-category-img"
-          />
-      </span>
+              src="./assets/images/icon-accessibility.svg"
+              alt="quiz category icon"
+              class="active-category-img"
+            />
+          </span>
           <span id="header-text" class="fs-s fs-s-mobile">Accessibility</span>
         </div>
 
         <div class="theme-toggle-container">
-    <div class="thema-sun-icon"></div>
+          <div class="thema-sun-icon"></div>
           <label class="switch bg-color-purple-600">
-            <input type="checkbox" id="theme-toggle" class="theme-togle-input" />
+            <input
+              type="checkbox"
+              id="theme-toggle"
+              class="theme-togle-input"
+            />
             <span class="slider round bg-color-white"></span>
           </label>
-       <div class="thema-moon-icon"></div>
+          <div class="thema-moon-icon"></div>
         </div>
       </nav>
 
       <!-- Quiz menu start -->
       <section id="start-menu" class="screen-layout">
         <div class="v-stack-lg">
-          <h1 class=" fs-l fw-light fs-l-mobile">
+          <h1 class="fs-l fw-light fs-l-mobile">
             Welcome to the <span class="fw-medium">Frontend Quiz!</span>
           </h1>
           <p class="fs-smaller">Pick a subject to get started.</p>
         </div>
         <div class="quiz-menu" id="category-list">
-          <button class="active btn bg-color-white btn-bg-color" data-category="html" id="btnCategory">
+          <button
+            class="active btn bg-color-white btn-bg-color"
+            data-category="html"
+            id="btnCategory"
+          >
             <img
               src="assets/images/icon-html.svg"
               alt="icon-html"
               class="html-icon p-100"
             />
-            <span class="fs-s fs-s-mobile text-color btnCategoriValue">HTML</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue"
+              >HTML</span
+            >
           </button>
-          <button class="btn bg-color-white btn-bg-color" data-category="css" id="btnCategory">
+          <button
+            class="btn bg-color-white btn-bg-color"
+            data-category="css"
+            id="btnCategory"
+          >
             <img
               src="assets/images/icon-css.svg"
               alt="icon-css"
               class="css-icon p-100"
             />
-            <span class="fs-s fs-s-mobile text-color btnCategoriValue">CSS</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue"
+              >CSS</span
+            >
           </button>
-          <button class="btn bg-color-white btn-bg-color" data-category="javascript" id="btnCategory">
+          <button
+            class="btn bg-color-white btn-bg-color"
+            data-category="javascript"
+            id="btnCategory"
+          >
             <img
               src="assets/images/icon-js.svg"
               alt="icon-javascript"
               class="js-icon p-100"
             />
-            <span class="fs-s fs-s-mobile text-color btnCategoriValue">JavaScript</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue"
+              >JavaScript</span
+            >
           </button>
-          <button class="btn bg-color-white btn-bg-color" data-category="accessibility" id="btnCategory">
+          <button
+            class="btn bg-color-white btn-bg-color"
+            data-category="accessibility"
+            id="btnCategory"
+          >
             <img
               src="assets/images/icon-accessibility.svg"
               alt="icon-accessibility"
               class="accessibility-icon p-100"
             />
-            <span class="fs-s fs-s-mobile text-color btnCategoriValue">Accessibility</span>
+            <span class="fs-s fs-s-mobile text-color btnCategoriValue"
+              >Accessibility</span
+            >
           </button>
         </div>
       </section>
@@ -93,21 +120,26 @@
       <section id="quiz-screen" class="screen-layout hidden">
         <div class="v-stack-lg">
           <div class="question-info">
-            <span class="question-count fs-smaller fs-m-mobile ">
-              Question <span id="current-num">1</span> of 10</span
+            <span class="question-count fs-smaller fs-m-mobile">
+              Question <span id="current-num">1</span> of 10
+            </span>
+            <p
+              class="marginBottom fs-m fw-medium fs-m-mobile"
+              id="questionText"
             >
-            <p class="marginBottom fs-m  fw-medium fs-m-mobile" id="questionText">
               Which of these color contrast ratios defines the minimum WCAG 2.1
               Level AA requirement for normal text?
             </p>
           </div>
+
           <div class="progress-container">
+            <label id="time-out" style="display: none">Time's Up!</label>
             <input
               type="range"
               id="quiz-progress"
               min="0"
               max="100"
-              value="10"
+              value="100"
               class="hidden-input"
             />
           </div>
@@ -118,25 +150,31 @@
             <span class="fs-s fw-medium fs-s-mobile text-color">4.5 : 1</span>
           </button>
           <button class="btn bg-color-white btn-bg-color" type="button">
-            <span class="fs-s quiz-menu-char  fs-s-mobile">B</span>
+            <span class="fs-s quiz-menu-char fs-s-mobile">B</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">3 : 1 </span>
           </button>
           <button class="btn bg-color-white btn-bg-color" type="button">
-            <span class="fs-s quiz-menu-char  fs-s-mobile">C</span>
+            <span class="fs-s quiz-menu-char fs-s-mobile">C</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">2.5 : 1</span>
           </button>
           <button class="btn bg-color-white btn-bg-color" type="button">
-            <span class="fs-s quiz-menu-char  fs-s-mobile">D</span>
+            <span class="fs-s quiz-menu-char fs-s-mobile">D</span>
             <span class="fs-s fw-medium fs-s-mobile text-color">5 : 1</span>
           </button>
         </div>
-             <button type="submit" class="btn-change fs-s  fs-s-mobile" id="submitBtn">
-            <span>Submit Answer</span>
-          </button>
-          <div class="empty-message">
-            <img src="assets/images/icon-error.svg" alt="empty-error-icon">
-            <span class="empty-text fs-m fs-m-mobile">Please select an answer</span>
-          </div>
+        <button
+          type="submit"
+          class="btn-change fs-s fs-s-mobile"
+          id="submitBtn"
+        >
+          <span>Submit Answer</span>
+        </button>
+        <div class="empty-message">
+          <img src="assets/images/icon-error.svg" alt="empty-error-icon" />
+          <span class="empty-text fs-s fs-s-mobile"
+            >Please select an answer</span
+          >
+        </div>
       </section>
       <!-- Quiz question end -->
 
@@ -144,24 +182,27 @@
       <section id="quiz-completed" class="screen-layout hidden">
         <div class="v-stack-lg">
           <div class="result-header">
-            <p class="fs-l fw-light fs-l-mobile ">Quiz completed</p>
+            <p class="fs-l fw-light fs-l-mobile">Quiz completed</p>
             <p class="fs-l fw-medium fs-l-mobile">You scored...</p>
           </div>
         </div>
 
         <div class="v-stack" id="quiz-result-container">
-          <div class="score-card bg-color-white btn-bg-color" id="final-score-box">
+          <div
+            class="score-card bg-color-white btn-bg-color"
+            id="final-score-box"
+          >
             <div class="active-category">
               <img
                 src="assets/images/icon-accessibility.svg"
                 alt="active quiz category icon"
                 class="active-category-img"
               />
-              <span class="fs-s fs-s-mobile ">Accessibility</span>
+              <span class="fs-s fs-s-mobile">Accessibility</span>
             </div>
 
-            <div class="score-display ">
-              <p class="fs-xl fw-medium  fs-xl-mobile text-color">8</p>
+            <div class="score-display">
+              <p class="fs-xl fw-medium fs-xl-mobile text-color">8</p>
               <span class="fs-sm fw-regular fs-sm-mobile">out of 10</span>
             </div>
           </div>

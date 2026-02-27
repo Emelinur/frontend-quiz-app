@@ -189,7 +189,7 @@ main {
     "question options"
     "question submit"
     "question error";
-  gap: var(--spacing-1600);
+  gap: var(--spacing-800);
 }
 .v-stack-lg {
   display: flex;
@@ -402,6 +402,7 @@ input[type="checkbox"] {
 }
 
 input[type="range"] {
+  background: linear-gradient(to right, #A729F5 var(--progress, 50%), #F4F6F8 var(--progress, 10%));
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -489,7 +490,7 @@ input[type="range"]:active::-webkit-slider-thumb {
     "options"
     "submit"
      "error";
-    gap: var(--spacing-800);
+    gap: var(--spacing-600);
   }
   .v-stack-lg {
     display: flex;

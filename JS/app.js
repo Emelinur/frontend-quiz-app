@@ -1,6 +1,8 @@
 import { getData } from "./helpers.js";
-const themaSelect = document.querySelector("#theme-toggle");
-const btnCategory = document.querySelectorAll("#btnCategory");
+
+// ========== DOM Elements Cache ==========
+const themeToggle = document.querySelector("#theme-toggle");
+const categoryButtons = document.querySelectorAll("#btnCategory");
 const quizScreen = document.querySelector("#quiz-screen");
 const startMenu = document.querySelector("#start-menu");
 const activeCategory = document.querySelector("#active-category");
@@ -9,45 +11,58 @@ const submitBtn = document.querySelector("#submitBtn");
 const emptyMessage = document.querySelector(".empty-message");
 const currentNum = document.querySelector("#current-num");
 const quizCompleted = document.querySelector("#quiz-completed");
+const questionText = document.querySelector("#questionText");
+const progressBar = document.querySelector("#quiz-progress");
+const timeoutLabel = document.querySelector("#time-out");
+const finalScore = document.querySelector("#final-score");
+const totalQuestionsDisplay = document.querySelector("#total-questions");
+const completedCategory = document.querySelector("#completed-category");
+const playAgainBtn = document.querySelector("#play-again");
 
-themaSelect.addEventListener("change", (e) => {
-  const selectedThema = e.target.checked;
-  selectedThema
-    ? document.body.classList.add("dark")
-    : document.body.classList.remove("dark");
-  localStorage.setItem("selectedThema", selectedThema);
-});
+// ========== Application State ==========
 let selectedQuiz = null;
 let selectedAnswer = null;
 let score = 0;
+let currentQuestionIndex = 0;
+let timeLeft = 100;
+let timerInterval = null;
+
+// ========== Theme Toggle ==========
+themeToggle.addEventListener("change", (e) => {
+  const isDarkMode = e.target.checked;
+  isDarkMode
+    ? document.body.classList.add("dark")
+    : document.body.classList.remove("dark");
+  localStorage.setItem("selectedTheme", isDarkMode);
+});
+
+// ========== Option Selection ==========
 optionsList.addEventListener("click", (e) => {
   const clickedBtn = e.target.closest(".btn");
   if (clickedBtn && !clickedBtn.classList.contains("disabled")) {
     emptyMessage.style.display = "none";
-    const allBtns = optionsList.querySelectorAll(".btn");
-    allBtns.forEach((btn) => {
+    document.querySelectorAll("#options-list .btn").forEach((btn) => {
       btn.classList.remove("selected");
     });
     clickedBtn.classList.add("selected");
     selectedAnswer = clickedBtn.getAttribute("data-option");
   }
 });
-let currentQuestionIndex = 0;
+
+// ========== Submit Answer ==========
 submitBtn.addEventListener("click", () => {
   const questions = selectedQuiz.questions;
+
   if (submitBtn.textContent === "Next Question") {
     startTimer();
-    const timeoutLabel = document.querySelector("#time-out");
-    if (timeoutLabel) {
-      timeoutLabel.style.display = "none";
-    }
+    timeoutLabel.style.display = "none";
     currentQuestionIndex++;
+
     if (currentQuestionIndex < questions.length) {
       currentNum.innerText = currentQuestionIndex + 1;
       const nextQuestion = questions[currentQuestionIndex];
       renderQuestion(nextQuestion);
       renderOptions(nextQuestion.options);
-      console.log(currentNum.innerText);
       submitBtn.textContent = "Submit Answer";
       selectedAnswer = null;
     } else {
@@ -65,109 +80,104 @@ submitBtn.addEventListener("click", () => {
   emptyMessage.style.display = "none";
   const correctAnswer = questions[currentQuestionIndex].answer;
   const currentBtn = document.querySelector(".btn.selected");
-  const allBtns = optionsList.querySelectorAll(".btn");
+  const allBtns = document.querySelectorAll("#options-list .btn");
 
   if (selectedAnswer === "timeout") {
+    // Timeout handled
   } else if (selectedAnswer === correctAnswer) {
     currentBtn.classList.add("correct");
-    score++; // Doğruysa artır
+    score++;
   } else {
     currentBtn.classList.add("error");
-
     allBtns.forEach((btn) => {
       if (btn.getAttribute("data-option") === correctAnswer) {
         btn.classList.add("show-correct");
       }
     });
   }
+
   allBtns.forEach((btn) => btn.classList.add("disabled"));
   submitBtn.textContent = "Next Question";
 });
 
-btnCategory.forEach((btn) => {
+// ========== Category Selection ==========
+categoryButtons.forEach((btn) => {
   btn.addEventListener("click", async (e) => {
     const categoryName = e.currentTarget
       .querySelector(".btnCategoriValue")
       .textContent.trim()
       .toUpperCase();
-    const allData = await getData();
-    selectedQuiz = allData.quizzes.find(
-      (quiz) => quiz.title.toUpperCase() === categoryName,
-    );
 
-    if (selectedQuiz) {
-      startMenu.classList.add("hidden");
-      quizScreen.classList.remove("hidden");
-      activeCategory.classList.remove("hidden");
-      activeCategory.querySelector("img").src = selectedQuiz.icon;
-      activeCategory.querySelector("#header-text").textContent =
-        selectedQuiz.title;
-      renderQuestion(selectedQuiz.questions[0]);
-      renderOptions(selectedQuiz.questions[0].options);
-      startTimer();
+    try {
+      const allData = await getData();
+      selectedQuiz = allData.quizzes.find(
+        (quiz) => quiz.title.toUpperCase() === categoryName
+      );
+
+      if (selectedQuiz) {
+        startMenu.classList.add("hidden");
+        quizScreen.classList.remove("hidden");
+        activeCategory.classList.remove("hidden");
+        activeCategory.querySelector("img").src = selectedQuiz.icon;
+        activeCategory.querySelector("#header-text").textContent =
+          selectedQuiz.title;
+        renderQuestion(selectedQuiz.questions[0]);
+        renderOptions(selectedQuiz.questions[0].options);
+        startTimer();
+      }
+    } catch (error) {
+      console.error("Failed to load quiz data:", error);
     }
   });
 });
+
+// ========== Quiz Completion ==========
 function showResult() {
   quizScreen.classList.add("hidden");
   quizCompleted.classList.remove("hidden");
-  const scoreDisplay = document.querySelector("#final-score");
-  const totalQuestionsDisplay = document.querySelector("#total-questions");
-  if (scoreDisplay) scoreDisplay.textContent = score;
-  if (totalQuestionsDisplay)
-    totalQuestionsDisplay.textContent = selectedQuiz.questions.length;
-  const completedCategory = document.querySelector("#completed-category");
-  if (completedCategory) {
-    completedCategory.querySelector("img").src = selectedQuiz.icon;
-    completedCategory.querySelector("span").textContent = selectedQuiz.title;
-  }
-  const playAgainBtn = document.querySelector("#play-again");
 
-  playAgainBtn.addEventListener("click", () => {
-    // Verileri sıfırla
-    score = 0;
-    currentQuestionIndex = 0;
-    selectedQuiz = null;
-    selectedAnswer = null;
+  finalScore.textContent = score;
+  totalQuestionsDisplay.textContent = selectedQuiz.questions.length;
 
-    // Ekranları değiştir
-    quizCompleted.classList.add("hidden");
-    activeCategory.classList.add("hidden"); // Header'daki ikon gitsin
-    startMenu.classList.remove("hidden");
-  });
+  completedCategory.querySelector("img").src = selectedQuiz.icon;
+  completedCategory.querySelector("span").textContent = selectedQuiz.title;
 }
+
+// ========== Play Again Handler ==========
+playAgainBtn.addEventListener("click", resetGame);
+
+function resetGame() {
+  score = 0;
+  currentQuestionIndex = 0;
+  selectedQuiz = null;
+  selectedAnswer = null;
+
+  quizCompleted.classList.add("hidden");
+  activeCategory.classList.add("hidden");
+  startMenu.classList.remove("hidden");
+}
+
+// ========== Render Functions ==========
 function renderQuestion(questionData) {
-  //Ouestions
-  const questionText = document.querySelector("#questionText");
-  if (questionText) {
-    questionText.textContent = questionData.question;
-  }
+  questionText.textContent = questionData.question;
 }
 
 function renderOptions(options) {
-  //options
-  const optionsContainer = document.querySelector("#options-list");
   const optionsHTML = options
     .map((option, index) => {
       const letter = String.fromCharCode(65 + index);
       return `
-<button class="btn bg-color-white btn-bg-color" type="button" data-option="${option}">
-            <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
-            <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
-            <span class="empty"></span>
-          </button>
-`;
+<button class="btn bg-color-white" type="button" data-option="${option}">
+  <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
+  <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
+</button>`;
     })
     .join("");
-  optionsContainer.innerHTML = optionsHTML;
+  optionsList.innerHTML = optionsHTML;
 }
 
-//Timer
-let timeLeft = 100;
-let timerInterval;
-
+// ========== Timer Functions ==========
 function startTimer() {
-  const progressBar = document.querySelector("#quiz-progress");
   clearInterval(timerInterval);
   timeLeft = 100;
 
@@ -182,11 +192,11 @@ function startTimer() {
     }
   }, 100);
 }
+
 function handleTimeOut() {
-  const timeoutLabel = document.querySelector("#time-out");
   const questions = selectedQuiz.questions;
   const correctAnswer = questions[currentQuestionIndex].answer;
-  const allBtns = optionsList.querySelectorAll(".btn");
+  const allBtns = document.querySelectorAll("#options-list .btn");
 
   clearInterval(timerInterval);
 
@@ -203,3 +213,4 @@ function handleTimeOut() {
   submitBtn.textContent = "Next Question";
   selectedAnswer = "timeout";
 }
+

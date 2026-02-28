@@ -8,6 +8,8 @@ const optionsList = document.querySelector("#options-list");
 const submitBtn = document.querySelector("#submitBtn");
 const emptyMessage = document.querySelector(".empty-message");
 const currentNum = document.querySelector("#current-num");
+const quizCompleted = document.querySelector("#quiz-completed");
+
 themaSelect.addEventListener("change", (e) => {
   const selectedThema = e.target.checked;
   selectedThema
@@ -34,10 +36,10 @@ let currentQuestionIndex = 0;
 submitBtn.addEventListener("click", () => {
   const questions = selectedQuiz.questions;
   if (submitBtn.textContent === "Next Question") {
-    startTimer()
-   const timeoutLabel = document.querySelector("#time-out");
+    startTimer();
+    const timeoutLabel = document.querySelector("#time-out");
     if (timeoutLabel) {
-        timeoutLabel.style.display = "none";
+      timeoutLabel.style.display = "none";
     }
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
@@ -49,7 +51,7 @@ submitBtn.addEventListener("click", () => {
       submitBtn.textContent = "Submit Answer";
       selectedAnswer = null;
     } else {
-        handleTimeOut() 
+      clearInterval(timerInterval);
       showResult();
     }
     return;
@@ -65,17 +67,16 @@ submitBtn.addEventListener("click", () => {
   const currentBtn = document.querySelector(".btn.selected");
   const allBtns = optionsList.querySelectorAll(".btn");
 
-  if (selectedAnswer === correctAnswer) {
+  if (selectedAnswer === "timeout") {
+  } else if (selectedAnswer === correctAnswer) {
     currentBtn.classList.add("correct");
-    score++;
+    score++; // Doğruysa artır
   } else {
     currentBtn.classList.add("error");
-    if (score > 0) score--;
- 
+
     allBtns.forEach((btn) => {
       if (btn.getAttribute("data-option") === correctAnswer) {
         btn.classList.add("show-correct");
-       
       }
     });
   }
@@ -103,14 +104,37 @@ btnCategory.forEach((btn) => {
         selectedQuiz.title;
       renderQuestion(selectedQuiz.questions[0]);
       renderOptions(selectedQuiz.questions[0].options);
-         startTimer()
- 
+      startTimer();
     }
   });
 });
 function showResult() {
   quizScreen.classList.add("hidden");
-  resultScreen.classList.remove("hidden");
+  quizCompleted.classList.remove("hidden");
+  const scoreDisplay = document.querySelector("#final-score");
+  const totalQuestionsDisplay = document.querySelector("#total-questions");
+  if (scoreDisplay) scoreDisplay.textContent = score;
+  if (totalQuestionsDisplay)
+    totalQuestionsDisplay.textContent = selectedQuiz.questions.length;
+  const completedCategory = document.querySelector("#completed-category");
+  if (completedCategory) {
+    completedCategory.querySelector("img").src = selectedQuiz.icon;
+    completedCategory.querySelector("span").textContent = selectedQuiz.title;
+  }
+  const playAgainBtn = document.querySelector("#play-again");
+
+  playAgainBtn.addEventListener("click", () => {
+    // Verileri sıfırla
+    score = 0;
+    currentQuestionIndex = 0;
+    selectedQuiz = null;
+    selectedAnswer = null;
+
+    // Ekranları değiştir
+    quizCompleted.classList.add("hidden");
+    activeCategory.classList.add("hidden"); // Header'daki ikon gitsin
+    startMenu.classList.remove("hidden");
+  });
 }
 function renderQuestion(questionData) {
   //Ouestions
@@ -139,7 +163,7 @@ function renderOptions(options) {
 }
 
 //Timer
-let timeLeft = 100; 
+let timeLeft = 100;
 let timerInterval;
 
 function startTimer() {
@@ -150,9 +174,7 @@ function startTimer() {
   timerInterval = setInterval(() => {
     timeLeft -= 1;
     progressBar.value = timeLeft;
-    
-    // CSS'deki rengi güncelle (Senior Dokunuşu)
-    progressBar.style.setProperty('--progress', `${timeLeft}%`);
+    progressBar.style.setProperty("--progress", `${timeLeft}%`);
 
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
@@ -179,5 +201,5 @@ function handleTimeOut() {
   });
 
   submitBtn.textContent = "Next Question";
-  selectedAnswer = "timeout"; 
+  selectedAnswer = "timeout";
 }

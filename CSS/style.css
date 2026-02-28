@@ -444,6 +444,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 /* Quiz question end */
 
 /* Quiz completed start */
+
 .result-header {
   display: flex;
   flex-direction: column;
@@ -451,8 +452,9 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 /* score */
-.score-card {
-  display: flex;
+
+.score-card{
+display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-500);
@@ -467,9 +469,20 @@ input[type="range"]:active::-webkit-slider-thumb {
   gap: var(--spacing-200);
 }
 
-.restartbtn {
+.btn-purple {
   width: 100%;
-  margin-top: var(--spacing-400);
+  padding: var(--spacing-400);
+  background-color: var(--purple_600);
+  border: none; 
+  border-radius: var(--spacing-300);
+  cursor: pointer;
+}
+.btn-purple span {
+  color: var(--white);
+  text-align: center;
+}
+.btn-purple:hover {
+  background-color: var(--purple_100);
 }
 
 /* Quiz completed end */
@@ -630,18 +643,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   .empty-message img{
     width: 30px;
     height: 30px;
-  }
-  .score-card {
-    padding: var(--spacing-400);
-  }
-
-  .result-header {
-    text-align: left;
-  }
-
-  .btnchange {
-    padding: var(--spacing-200);
-    border-radius: var(--spacing-300);
   }
   
   .correct, 

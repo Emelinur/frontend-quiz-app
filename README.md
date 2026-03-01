@@ -16,8 +16,6 @@
   - [Continued development](#continued-development)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -35,7 +33,7 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - Navigate the entire app only using their keyboard
 - **Bonus**: Change the app's theme between light and dark
--This is what was intended.
+- "It was requested in this way."
 
 ### Screenshot
 

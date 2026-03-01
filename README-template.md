@@ -36,9 +36,14 @@ Users should be able to:
 - Navigate the entire app only using their keyboard
 - **Bonus**: Change the app's theme between light and dark
 
+
 ### Screenshot
 
 ![](./screenshot.jpg)
+| Desktop                        | Mobile               | Tablet |
+| ------------------------------ | -------------------- | ---------------------- |
+| ![Desktop](./assets/images/desktop.png) | ![Mobile](./assets/images/mobile.png) | ![Tablet](./assets/images/tablet.png) |
+
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
@@ -50,53 +55,54 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [frontend-quiz-app](https://www.frontendmentor.io/solutions/frontend-quiz-app-TCGgrRvY_G)
+- Live Site URL: [frontend-quiz-app](https://emelinur.github.io/frontend-quiz-app/)
 
 ## My process
 
 ### Built with
 
+- **HTML5 & CSS3**: Utilizing modern CSS variables and flex/grid layouts for responsiveness
+- **Vanilla JavaScript**: Mastering DOM manipulation and asynchronous data fetching (fetch API)
+- **JSON**: Managing quiz data through a structured local data file
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- CSS custom properties (CSS Variables)
+- Flexbox & CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Component-based logic architecture
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This project wasn't just about writing code; it was about shifting my mindset towards modular and functional thinking.
 
-To see how you can add code snippets, see below:
+**Component-Based Logic**: Even though I used Vanilla JavaScript, I approached the project with a "component mindset." Breaking the UI into manageable parts like the timer, options list, and result screen was a game-changer for my workflow.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+**Functional Decomposition**: I learned how to separate concerns by delegating specific tasks to different functions (like `renderQuestion`, `startTimer`, and `handleTimeOut`). Controlling and managing different parts of the app independently was a unique and rewarding experience.
+
+**State Management**: Handling the "state" of the quiz—tracking scores, current question indices, and selected answers—helped me understand how data flows through an application.
+
+**DOM Caching & Performance Optimization**:
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+// Cache DOM elements at the top to avoid repeated queries
+const themeToggle = document.querySelector("#theme-toggle");
+const optionsList = document.querySelector("#options-list");
+const submitBtn = document.querySelector("#submitBtn");
+// ... instead of querying the DOM multiple times in functions
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+**CSS Architecture**: Utilizing CSS variables and rem units instead of hardcoded pixel values, making the codebase more maintainable and responsive across different screen sizes.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+**UI Fidelity**: Coming from a photography background, I took great pride in maintaining high design fidelity, ensuring that typography and spacing aligned with the original design tokens.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+This challenge has significantly boosted my confidence. For future iterations:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- **React Framework Migration**: My next goal is to solve this same challenge using a JavaScript Framework/Library (like React) to see how these component concepts I've learned manually are handled in a more automated environment.
+- **Advanced State Management**: Explore Redux or Context API for more complex state handling patterns.
+- **Testing**: Implement unit tests and integration tests to ensure code reliability.
+- **Accessibility Improvements**: Enhance keyboard navigation and screen reader support.
+- **Performance Optimization**: Implement lazy loading for quiz data and optimize bundle size.
 
 ### Useful resources
 
@@ -106,12 +112,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
+- Frontend Mentor - [@Emelinur](https://www.frontendmentor.io/profile/Emelinur)
+- Github - [@Emelinur](https://github.com/Emelinur)
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
 ## Acknowledgments
 

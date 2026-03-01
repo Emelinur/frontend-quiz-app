@@ -4,8 +4,6 @@
 
 ## Welcome! 👋
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
-
 ## Table of contents
 
 - [Overview](#overview)

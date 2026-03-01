@@ -166,10 +166,17 @@ function renderOptions(options) {
   const optionsHTML = options
     .map((option, index) => {
       const letter = String.fromCharCode(65 + index);
-      return `
-<button class="btn bg-color-white" type="button" data-option="${option}">
+      // Escape HTML special characters to prevent parsing issues
+      const escapedOption = option
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+      
+      return `<button class="btn bg-color-white" type="button" data-option="${option}">
   <span class="fs-s quiz-menu-char fs-s-mobile">${letter}</span>
-  <span class="fs-s fw-medium fs-s-mobile text-color">${option}</span>
+  <span class="fs-s fw-medium fs-s-mobile text-color">${escapedOption}</span>
 </button>`;
     })
     .join("");
